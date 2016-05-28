@@ -1,0 +1,73 @@
+<html>
+<head>
+<style>
+input
+{
+  border:solid;
+  width:50px;
+  height:25px;
+  margin:20px;
+}
+img
+{
+  width:400px;
+}
+</style>
+</head>
+<body bgcolor="yellow">
+<marquee><font size="5"><h2>ROCKET LAUNCH</h2></font></marquee>
+<middle>
+<input type="text" id="minute">
+<input type="text" id="second">
+<middle>
+<br>
+<button id="Submit" onClick="initialise()">Submit</button>
+<button id="pause" onClick="pause()">pause</button>
+<button id="reset" onClick="reset()">reset</button>
+<button id="play" onClick="main_timer()">play</button>
+<center>
+<div>
+<span>Minutes:</span>
+<div id="minutes"></div>
+</div>
+<div>
+<span>Seconds:</span>
+<div id="seconds"></div></div>
+</center>
+<img src="th.jpg" align="right">
+<script>
+var t;
+var min,sec;
+function initialise()
+{
+    min=document.getElementById("minute").value;
+    sec=document.getElementById("second").value;
+    main_timer();
+}
+function main_timer()
+{
+    t=setInterval(function(){
+    if(min<=0 && sec==0)
+    {min=0;sec=0;}
+    else if(min>0 && sec==0)
+    {min=min-1;sec=59;}
+    else
+    sec=sec-1;
+document.getElementById("minutes").innerHTML=min;
+document.getElementById("seconds").innerHTML=sec;
+},1000);
+}
+
+function pause()
+{
+    clearInterval(t);
+}
+function reset()
+{
+    clearInterval(t);
+    initialise();
+}
+</script>
+</body>
+</html>
+

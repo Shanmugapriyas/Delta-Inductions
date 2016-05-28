@@ -1,0 +1,77 @@
+<html>
+<body bgcolor="green">
+<marquee><font size="10"><b>TIME LEFT TO SHOW YOUR PATRIOTISM</b></font></marquee>
+    <input type="text" value="days">
+    <input type="text" value="hours">
+    <input type="text" value="minutes">
+    <input type="text" value="seconds">
+<form name="form1">
+    <input type="text" name="days" value="0">
+    <input type="text" name="hours" value="0">
+    <input type="text" name="minutes" value="0">
+    <input type="text" name="seconds" value="0">
+	
+</form>
+<center>
+<font size="8">
+    <b>Time left to Aug 15 2016.</b>
+	
+</font>
+</center>
+<img src="flag.jpg" align="center">
+<style>
+img
+{
+   position:relative;
+   width:550px;
+   height:350px;
+   top:50px;
+}
+input
+{
+   position:relative;
+   left:550px;
+   top:250;
+   height:40px;
+   width:50px;
+   border-color:black;
+}
+center
+{
+   position:relative;
+   top:20px;
+   right:10px;
+}
+</style>
+<script>
+var now = new Date();
+var TheEvent = new Date("Aug 15 2016 00:00:01");
+var seconds = (TheEvent - now) / 1000;
+var minutes = seconds / 60;
+var hours = minutes / 60;
+var days = hours / 24;
+ID = window.setTimeout("update();", 1000);
+
+function update() {
+  now = new Date();
+  seconds = (TheEvent - now) / 1000;
+  seconds = Math.floor(seconds);
+  minutes = seconds / 60;
+  hours = seconds/ 3600;
+  days = seconds / 86400;
+  days = Math.floor(days);
+  hours=seconds/3600-days*24;
+  hours=Math.floor(hours);
+  minutes=seconds/60-((days*1440)+(hours*60));
+  minutes=Math.floor(minutes);
+  seconds=seconds-((days*86400)+(hours*3600)+(minutes*60));
+  seconds=Math.floor(seconds);
+  document.form1.days.value = days;
+  document.form1.hours.value = hours;
+  document.form1.minutes.value = minutes;
+  document.form1.seconds.value = seconds;
+  ID = window.setTimeout("update();", 1000);
+}
+</script>
+</body>
+</html>
